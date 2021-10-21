@@ -1,0 +1,2 @@
+class Pokeman < ApplicationRecord
+end

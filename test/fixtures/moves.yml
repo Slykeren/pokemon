@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  move: MyString
+  description: MyText
+  type: 
+  category: MyString
+  power: 
+  accuracy: 
+
+two:
+  move: MyString
+  description: MyText
+  type: 
+  category: MyString
+  power: 
+  accuracy: 
