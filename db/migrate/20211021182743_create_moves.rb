@@ -5,8 +5,8 @@ class CreateMoves < ActiveRecord::Migration[6.1]
       t.text :description
       t.string :type
       t.string :category
-      t.int :power
-      t.int :accuracy
+      t.integer :power
+      t.integer :accuracy
 
       t.timestamps
     end
