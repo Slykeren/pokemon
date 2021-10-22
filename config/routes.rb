@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-
-  get 'items/index'
-  get 'moves/index'
   get 'about', to: 'static_pages#about', as: 'about'
   resources :pokeman
   resources :moves

@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_021418) do
   create_table "move", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "type"
+    t.string "types"
     t.string "category"
     t.integer "power"
     t.integer "accuracy"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 2021_10_22_021418) do
     t.string "name"
     t.string "alias"
     t.string "types"
-    t.string "type"
     t.string "abilities"
     t.string "moves"
     t.datetime "created_at", precision: 6, null: false
