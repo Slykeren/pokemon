@@ -12,3 +12,27 @@ require 'json'
 require 'pp'
 require 'csv'
 require 'poke-api-v2'
+
+Pokeman.destroy_all
+Move.destroy_all
+Item.destroy_all
+Pokemon_move.destroy_all
+
+    csv_data = File.read(Rails.root.join('db/moves.csv'))
+    csv = CSV.parse(csv_data, :headers => true, :encoding => "ISO-8859-1")
+    csv.each do |row|
+        move = Move.new
+        move.name = row["name"]
+        move.description = row["description"]
+        move.type = row["type"]
+        move.category = row["category"]
+        move.power = row["power"]
+        move.accuracy = row["accuracy"]
+        move.save
+        puts "added item to moves table"
+    end
+    
+    puts "there are #{Move.count} moves in the moves table"
+
+
+
