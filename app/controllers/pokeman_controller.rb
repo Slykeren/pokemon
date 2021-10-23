@@ -5,7 +5,7 @@ class PokemanController < ApplicationController
       end
     
       def show
-        @pokemen = Pokeman.find(params[:id])
+        @pokeman = Pokeman.find(params[:id])
       end
 
 end
