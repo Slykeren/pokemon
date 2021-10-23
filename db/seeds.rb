@@ -14,8 +14,8 @@ require 'csv'
 #require 'poke-api-v2'
 
 
-#Pokeman.destroy_all
-
+#Pokeman. destroy_all
+Move.destroy_all
 #Item.destroy_all
 #Pokemon_move.destroy_all
 
@@ -23,7 +23,7 @@ require 'csv'
     csv = CSV.parse(csv_data, :headers => true, :encoding => "ISO-8859-1")
     csv.each do |row|
         move = Move.new
-        move.name = row["name"]
+        move.name = row["move"]
         move.description = row["description"]
         move.types = row["types"]
         move.category = row["category"]
@@ -32,7 +32,6 @@ require 'csv'
         move.save
         puts "added item to moves table"
     end
-    
-    puts "there are  moves in the moves table"
+
 
 

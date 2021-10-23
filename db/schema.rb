@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_22_021418) do
+ActiveRecord::Schema.define(version: 2021_10_22_170814) do
 
-  create_table "item", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "sprite"
@@ -20,23 +20,13 @@ ActiveRecord::Schema.define(version: 2021_10_22_021418) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "move", force: :cascade do |t|
+  create_table "moves", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "types"
     t.string "category"
     t.integer "power"
     t.integer "accuracy"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "pokeman", force: :cascade do |t|
-    t.string "name"
-    t.string "alias"
-    t.string "types"
-    t.string "abilities"
-    t.string "moves"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
