@@ -1,7 +1,15 @@
-		
+
+<!DOCTYPE HTML>
+<html>
+<head>
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-    <h1>Pokeman</h1>
+<head>
+    <body>
+    <h1>Moves</h1>
 
     <% @pokemen.each do |poke| %>
     <h1> <%= link_to poke.name, poke %> </h1>
     <% end %>
+
+    </body>
+</html>
