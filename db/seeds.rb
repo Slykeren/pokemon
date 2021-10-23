@@ -16,7 +16,7 @@ require 'csv'
 
 #Pokeman. destroy_all
 Move.destroy_all
-#Item.destroy_all
+Item.destroy_all
 #Pokemon_move.destroy_all
 
     csv_data = File.read(Rails.root.join('db/moves.csv'))
@@ -33,5 +33,15 @@ Move.destroy_all
         puts "added item to moves table"
     end
 
+
+    
+    json_data = File.read(Rails.root.join('db/items.json'))
+    json = JSON.parse(json_data, :headers => true, :encoding => "ISO-8859-1")
+    json.each do |row|
+        item = Item.new
+        item.name = row[1]["name"]
+        
+        puts "added item to items table"
+    end
 
 
