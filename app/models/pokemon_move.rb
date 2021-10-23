@@ -1,5 +1,7 @@
 class PokemonMove < ApplicationRecord
-    has_one :Move
-    has_one :Pokeman
+
+    belongs_to :move
+    belongs_to :pokeman
+    
 
 end

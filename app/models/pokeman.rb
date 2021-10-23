@@ -1,6 +1,6 @@
 class Pokeman < ApplicationRecord
     has_many :PokemonMove
-
-    validates :name, presence: true
-    validates :alias, presence: true
+    has_many :moves, through: :PokemonMove
+    validates :name, :types, presence: true
+    
 end
