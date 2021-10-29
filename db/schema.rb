@@ -22,23 +22,24 @@ ActiveRecord::Schema.define(version: 2021_10_23_012022) do
 
   create_table "moves", force: :cascade do |t|
     t.string "name"
-    t.text "description"
-    t.string "types"
-    t.string "category"
-    t.integer "power"
-    t.integer "accuracy"
+    t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "pokemen", force: :cascade do |t|
     t.string "name"
-    t.string "url"
+    t.string "type1"
+    t.string "type2"
+    t.integer "total"
+    t.string "generation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "pokemon_moves", force: :cascade do |t|
+    t.integer "pokeman_id"
+    t.integer "move_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -18,15 +18,15 @@ require 'uri'
 Pokeman.destroy_all
 Move.destroy_all
 Item.destroy_all
-Pokemon_move.destroy_all
+#PokemonMove.destroy_all
 
 
-uri_variable = URI("https://pokeapi.co/api/v2/pokemon/")
+uri_variable = URI("https://pokeapi.co/api/v2/move?limit=1118")
 res = Net::HTTP.get_response(uri_variable)
 data = JSON.parse(res.body, :headers => true, :encoding => "ISO-8859-1")
 data["results"].each do |row|
     
-    Pokeman.create(
+    Move.create(
         {
             name: row["name"],
             url: row["url"]
@@ -40,20 +40,19 @@ data["results"].each do |row|
 end
 puts "added items to pokemen table"
 
-csv_data = File.read(Rails.root.join('db/moves.csv'))
+csv_data = File.read(Rails.root.join('db/pokemon.csv'))
 csv = CSV.parse(csv_data, :headers => true, :encoding => "ISO-8859-1")
 csv.each do |row|
-    move = Move.new
-    move.name = row["move"]
-    move.description = row["description"]
-    move.types = row["types"]
-    move.category = row["category"]
-    move.power = row["power"]
-    move.accuracy = row["accuracy"]
-    move.save
+    pkmn = Pokeman.new
+    pkmn.name = row["Name"]
+    pkmn.type1 = row["Type 1"]
+    pkmn.type2 = row["Type 2"]
+    pkmn.total = row["Total"]
+    pkmn.generation = row["Generation"]
+    pkmn.save
     
 end
-puts "added items to moves table"
+puts "added items to pokemon table"
 
     
     json_data = File.read(Rails.root.join('db/items.json'))
