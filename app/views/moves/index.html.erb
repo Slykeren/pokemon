@@ -8,6 +8,14 @@
     <body>
         <h1>Moves</h1>
 
+        <h3>Search Moves</h3>
+        <%= form_tag({}, method: :get) do %>
+        <%= text_field_tag(:search, params[:search]) %>
+        <%= submit_tag("Search") %>
+        <% end %>
+
+        
+
         <% @moves.each do |move| %>
         <h1> <%= link_to move.name, move %> </h1>
         <% end %>

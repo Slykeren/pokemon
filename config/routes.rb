@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   get 'about', to: 'static_pages#about', as: 'about'
+
+  def move_params
+    params.require(:move).permit(:name, :search)
+  end
+
   resources :pokeman
   resources :moves
   resources :items

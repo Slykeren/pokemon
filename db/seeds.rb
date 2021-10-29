@@ -14,31 +14,11 @@ require 'csv'
 #require 'poke-api-v2'
 require 'uri'
 
-
+PokemonMove.destroy_all
 Pokeman.destroy_all
 Move.destroy_all
 Item.destroy_all
-#PokemonMove.destroy_all
 
-
-uri_variable = URI("https://pokeapi.co/api/v2/move?limit=1118")
-res = Net::HTTP.get_response(uri_variable)
-data = JSON.parse(res.body, :headers => true, :encoding => "ISO-8859-1")
-data["results"].each do |row|
-    
-    Move.create(
-        {
-            name: row["name"],
-            url: row["url"]
-            
-            
-        }
-    )
-    
-    
-    
-end
-puts "added items to pokemen table"
 
 csv_data = File.read(Rails.root.join('db/pokemon.csv'))
 csv = CSV.parse(csv_data, :headers => true, :encoding => "ISO-8859-1")
@@ -52,7 +32,47 @@ csv.each do |row|
     pkmn.save
     
 end
-puts "added items to pokemon table"
+puts "added items to pokemn table"
+
+
+uri_variable = URI("https://pokeapi.co/api/v2/move?limit=1118")
+res = Net::HTTP.get_response(uri_variable)
+data = JSON.parse(res.body, :headers => true, :encoding => "ISO-8859-1")
+
+
+data["results"].each do |row|
+    
+    a = Move.create(
+        {
+            name: row["name"],
+            url: row["url"]
+            
+            
+        }
+    )
+    
+    uri_variable2 = URI(a.url)
+    res2 = Net::HTTP.get_response(uri_variable2)
+    data2 = JSON.parse(res2.body, :headers => true, :encoding => "ISO-8859-1")
+
+    data2["learned_by_pokemon"].each do |learnedby|
+        
+        move_of_poke = Pokeman.find_by(name: learnedby["name"].capitalize())
+
+        PokemonMove.create(
+            {
+                pokeman: move_of_poke,
+                move: a
+            }
+        )
+
+    end
+    
+    
+end
+puts "added items to moves table"
+
+
 
     
     json_data = File.read(Rails.root.join('db/items.json'))

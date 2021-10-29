@@ -9,7 +9,17 @@
 
         <h1> <%= @move.name %> </h1>
 
-        <h1> <%= @learned_by %> </h1>
+
+        <ul>
+            <% @move.pokemen.each do |learnedby| %>
+
+            <%# <% learned_by = learnedby["name"] %>  
+            <%= link_to learnedby.name, learnedby %>
+
+            
+            <% end %>
+        </ul>
+
 
         
 
