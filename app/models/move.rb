@@ -3,16 +3,12 @@ class Move < ApplicationRecord
     has_many :pokemen, through: :PokemonMove
     validates :name, presence: true
    
+    #search by name
     def self.search(search)
         if search
-            move = Move.find_by(name: search)
-            if move
-                self.where(id: move)
-            else 
-                Move.all
-            end
+            where('name LIKE ?', "%#{search}%")
         else
-            Move.all
+            all
         end
     end
 

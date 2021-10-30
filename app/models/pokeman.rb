@@ -3,17 +3,10 @@ class Pokeman < ApplicationRecord
     has_many :moves, through: :PokemonMove
     validates :name, presence: true
     
-    def self.search(search)
-        if search
-            pokemen = Pokeman.find_by(type1: search)
-            if pokemen
-                self.where(type1: pokemen)
-            else 
-                Pokeman.all
-            end
-        else
-            Pokeman.all
-        end
+    #search by type1
+    def self.search_by_type1(type1)
+        Pokeman.where(type1: type1)
     end
+    
 
 end
