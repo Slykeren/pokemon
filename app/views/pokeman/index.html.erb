@@ -7,24 +7,31 @@
     <body>
     <h1>Pokemans</h1>
 
+
+
         <%= form_tag({}, method: :get) do %>
-            <%= text_field_tag :name, params[:name] %>
-            <%= submit_tag "Search" %>
+        <%= text_field_tag(:name, params[:name]) %>
+        <%= submit_tag("Search") %>
         <% end %>
-
-
+   
+    
         
         <%= form_tag({}, :method => :get) do %>
         <%= select_tag(:type1, options_for_select(Pokeman.order(:type1).pluck(:type1).uniq ,:selected =>params[:option]), onchange: 'this.form.submit();', class: "form-control custom-select" , include_blank: true )%>
-        
         <% end %>
 
 
 
+    <%# if there are no @pokemen to display, show a message saying "no pokemen to display" %>
+    <% if @pokemen.empty? %>
+        <p>No pokemans to display</p>
+    <% else %>
     <% @pokemen.each do |poke| %>
     <h1> <%= link_to poke.name, poke %> </h1>
     <% end %>
+    <% end %>
 
+    
 
     </body>
 </html>
