@@ -6,13 +6,17 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
-
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 
 
   </head>
+
+
+<body>
+
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/about">About</a>
@@ -21,8 +25,6 @@
     <a class="navbar-item" href="/items">Items</a>
     </div>
     </nav>
-
-<body>
   <section class="section">
     <div class="content">
       <%= yield %>

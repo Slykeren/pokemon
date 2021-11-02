@@ -1,9 +1,5 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
-<head>
-    <body>
+
     <h1>Items</h1>
-    </body>
-</html>
+    <% @items.each do |item| %>
+        <h1> <%= link_to item.name, item %> </h1>
+        <% end %>
